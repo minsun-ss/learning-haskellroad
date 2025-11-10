@@ -105,3 +105,42 @@ substring a (b:bs) = substring a bs
 {- Use map to write a function lengths that take a list of lists and returns a list of the corresponding list lengths. -}
 lengths :: [[a]] -> [Integer]
 lengths xs = map (fromIntegral . length) xs
+
+-- Exercise 1.21
+{- Use map to write a function sumLengths that takes a list of lists and returns the sum of their lengths -}
+sumLengths :: [[a]] -> Integer
+sumLengths (xs) = sum (map (fromIntegral . length) xs)
+
+
+-- Exercise 1.24
+{- What happens when you modify the defining equation of ldp as follows -}
+primes1 :: [Integer]
+primes1 = 2: filter prime [3..]
+
+prime:: Integer -> Bool
+prime n 
+  | n < 1 = error "not a positive integer"
+  | n == 1 = False
+  | otherwise = ldp n == n
+
+divides d n = rem n d == 0 
+
+ld n = ldf 2 n
+
+ldf k n 
+  | divides k n = k
+  | k^2 > n = n
+  | otherwise = ldf (k+1) n 
+
+-- ldp :: Integer -> Integer
+-- ldp n = ldpf primes1 n
+
+ldp :: Integer -> Integer
+ldp = ldpf primes1
+
+ldpf :: [Integer] -> Integer -> Integer
+ldpf (p:ps) n 
+  | rem n p == 0 = p
+  | p^2 > n = n
+  | otherwise = ldpf ps n
+
