@@ -96,4 +96,12 @@ prefix (x:xs) (y:ys) = (x==y) && prefix xs ys
 
 -- Exercise 1.17
 {- Write a function substring :: String -> String -> Bool that checks whether str1 is a susbtring of str2 -}
+substring :: String -> String -> Bool
+substring a [] = False
+substring a b | prefix a b = True
+substring a (b:bs) = substring a bs 
 
+-- Exercise 1.20
+{- Use map to write a function lengths that take a list of lists and returns a list of the corresponding list lengths. -}
+lengths :: [[a]] -> [Integer]
+lengths xs = map (fromIntegral . length) xs
