@@ -170,5 +170,6 @@ There exists a q where p = 2q+1, 2q+3, 2q+5 in which one of these three values a
 -- Exercise 3.43
 {- 
  
-All primes are in the form of x + x... x times. ....??? 
- -}
+ if p is prime, then outside of 3, p mod 3 would either be remainder 1 or remainder 2. 1 squared is 1 + 2 = 3, which mod 3 is 0; in the case of 2 2^2 = 4 = 1 mod 3 which + 2 = 3, which is also divisible by three. So only p = 3 does this ever hold true. Similar to 3.42? 
+
+    -}
